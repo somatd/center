@@ -1,0 +1,83 @@
+{
+  "configName":"auth-cafe-configuration",
+  "dataSources":[{
+    "id":"authHistory",
+    "host":"http://aim.tdameritrade.com/auth-history",
+    "operations":[
+      {
+        "fetch": "/"
+      },
+      {
+        "get":"/{event-id}"
+      }
+    ],
+    "mockDataSet":[{
+      "ipaddress":"x",
+      "browser": "purple",
+      "size":"small",
+      "signed-in":"north"
+    },{
+      "ipaddress":"y",
+      "browser": "blue",
+      "size":"big",
+      "signed-in":"south"
+    },{
+      "ipaddress":"z",
+      "browser": "black",
+      "size":"extra medium",
+      "signed-in":"north-east"
+    }]
+  },{
+    "id":"authSession",
+    "host":"http://aim.tdameritrade.com/auth-session",
+    "operations":[
+      {
+        "fetch": "/"
+      },
+      {
+        "get":"/{event-id}"
+      }
+    ],
+    "mockDataSet":[{
+      "token":"12345"
+    },{
+      "token":"23451"
+    },{
+      "token":"23490"
+    }]
+  }],
+  "views":[{
+    "name":"Auth History",
+    "id":"authHistory",
+    "type":"tableView",
+    "dataSource":"authHistory",
+    "recordId":"ipaddress",
+      "columns":[{
+        "id":"ipaddress",
+        "label":"IP Address",
+        "path":"/ipaddress"
+      },{
+        "id":"signed-in",
+        "label":"Signed In",
+        "path":"/signed-in"
+      },
+      {
+        "id":"browser",
+        "label":"Browser",
+        "path":"/user-agent"
+      }]
+    },{
+    "name":"Auth Session",
+    "id":"authSession",
+    "type":"tableView",
+    "dataSource":"authSession",
+    "recordId":"token",
+      "columns":[{
+        "id":"token",
+        "label":"OAuth Token",
+        "path":"/token"
+      }]
+    }
+  ]
+
+}

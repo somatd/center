@@ -1,0 +1,12 @@
+/*.myTable{
+  border : 1px solid black;
+}
+.container {
+  padding-top: 200px;
+  padding-right: 300px;
+  padding-left: 300px;
+}*/
+
+.tableHeader {
+  font-weight: bold;
+}
